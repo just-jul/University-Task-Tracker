@@ -19,4 +19,10 @@ public class User {
     public String getSurname(){
         return this.surname;
     }
+    public int getSemester(){
+        return this.semester;
+    }
+    public ArrayList<UniClass> getClasses(){
+        return this.classes;
+    }
 }

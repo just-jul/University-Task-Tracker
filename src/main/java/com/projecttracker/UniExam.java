@@ -21,10 +21,10 @@ public class UniExam extends Task {
 
     @Override
     public String toString(){
-        return "Class: \n"+this.assignedClass+
-        "Id: \n"+this.getTaskId()+
+        return "Exam: \n"+this.getTaskName()+
+        "Class: \n"+this.assignedClass+
         "Date: \n"+this.getTaskDate()+
-        "Status "+this.getStatus();
+        "Time: \n"+this.getExamTime();
     }
 
 }

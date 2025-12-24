@@ -40,4 +40,27 @@ public class UniClass {
         ArrayList<StudySession> studySessionList = this.studySessions.getList();
         return studySessionList;
     }
+    public void printTasks(){
+        System.out.println("---- TASKS ----");
+        for(UniTask task : uniTasks.getList()){
+            System.out.println(task);
+        }
+    }
+    public void printExams(){
+        System.out.println("---- EXAMS ----");
+        for(UniExam exam : uniExams.getList()){
+            System.out.println(exam);
+        }
+    }
+    public void printStudySessions(){
+        System.out.println("---- STUDY SESSIONS ----");
+        for(StudySession session : studySessions.getList()){
+            System.out.println(session);
+        }
+    }
+    public void printAll(){
+        printTasks();
+        printExams();
+        printStudySessions();
+    }
 }

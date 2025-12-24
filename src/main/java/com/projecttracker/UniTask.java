@@ -13,7 +13,7 @@ public class UniTask extends Task {
 
     @Override
     public String toString(){
-        return "Name: \n"+this.getTaskName()+
+        return "Task name: \n"+this.getTaskName()+
         "Id: \n"+this.getTaskId()+
         "Due: \n"+this.getTaskDate()+
         "Status "+this.getStatus();
