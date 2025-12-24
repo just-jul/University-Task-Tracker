@@ -18,6 +18,4 @@ public class UniTask extends Task {
         "Due: \n"+this.getTaskDate()+
         "Status "+this.getStatus();
     }
-
-
 }

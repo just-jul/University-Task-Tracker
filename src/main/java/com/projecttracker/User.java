@@ -12,6 +12,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.semester = semester;
+        this.classes = new ArrayList<UniClass>();
     }
     public String getName(){
         return this.name;
@@ -24,5 +25,13 @@ public class User {
     }
     public ArrayList<UniClass> getClasses(){
         return this.classes;
+    }
+    public void addClass(UniClass c){
+        this.getClasses().add(c);
+    }
+    public void printClasses(){
+        for(UniClass c : this.classes){
+            System.out.println(c);
+        }
     }
 }

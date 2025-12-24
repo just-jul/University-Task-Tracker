@@ -46,7 +46,10 @@ public class UI {
 
             switch (choice) {
                 case 1:
-                    
+                for (UniClass c : loggedInUser.getClasses()){
+                    c.printAll();
+                    System.out.println();
+                }
                     break;
             
                 default:

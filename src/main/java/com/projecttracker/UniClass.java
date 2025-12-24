@@ -63,4 +63,10 @@ public class UniClass {
         printExams();
         printStudySessions();
     }
+
+    @Override
+    public String toString(){
+        return "------Class name: "+this.getClassName()+" ------\n"+
+        "Teacher: \n"+this.getTeacher();
+    }
 }
