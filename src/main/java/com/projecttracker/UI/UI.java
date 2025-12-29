@@ -1,10 +1,16 @@
-package com.projecttracker;
+package com.projecttracker.UI;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import com.projecttracker.model.StudySession;
+import com.projecttracker.model.UniClass;
+import com.projecttracker.model.UniExam;
+import com.projecttracker.model.UniTask;
+import com.projecttracker.model.User;
 
 public class UI {
     private Scanner scanner;

@@ -1,4 +1,4 @@
-package com.projecttracker;
+package com.projecttracker.model;
 
 import java.time.LocalDate;
 

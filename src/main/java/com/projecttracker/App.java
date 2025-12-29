@@ -2,6 +2,11 @@ package com.projecttracker;
 
 import java.util.ArrayList;
 
+import com.projecttracker.UI.UI;
+import com.projecttracker.model.Repository;
+import com.projecttracker.model.UniClass;
+import com.projecttracker.model.User;
+
 public class App
 {
     public static void main( String[] args )
