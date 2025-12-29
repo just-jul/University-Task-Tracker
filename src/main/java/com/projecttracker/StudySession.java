@@ -8,7 +8,7 @@ public class StudySession extends Task {
     private double durationMinutes;
     private UniClass assignedClass;
 
-    public StudySession(String taskName, int taskId, LocalDate date, boolean isDone, String status, LocalTime time, double durationMinutes, UniClass assignedClass){
+    public StudySession(String taskName, LocalDate date, LocalTime time, double durationMinutes, UniClass assignedClass){
         super(taskName, date);
         this.time = time;
         this.durationMinutes = durationMinutes;

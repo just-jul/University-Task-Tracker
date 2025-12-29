@@ -27,11 +27,10 @@ public class UI {
                 System.out.println("Welcome!");
                 start();
                 return;
-            }else{
-                System.out.println("Incorrect last name, try again.");
-                break;
             }
         }
+
+        System.out.println("Incorrect last name, try again.");
     }
     public void start(){
         System.out.println("-----University Calendar-----");
@@ -51,7 +50,7 @@ public class UI {
             System.out.println("11. Exit.");
             
             int choice = Integer.valueOf(scanner.nextLine());
-            if(choice == 6){
+            if(choice == 11){
                 break;
             }
 
@@ -112,7 +111,53 @@ public class UI {
                     break;
                 }
                 case 6: {
+                    UniClass foundClass = getClassFromUser();
+                    System.out.println("Enter topic of the exam you want to find: ");
+                    String examInput = scanner.nextLine();
 
+                    ArrayList<UniExam> examList = foundClass.getExamList();
+
+                    boolean isFound = false;
+                    for(UniExam exam : examList){
+                        if(exam.getTaskName().equalsIgnoreCase(examInput)){
+                            System.out.println(exam);
+                            isFound = true;
+                            break;
+                        }
+                    }
+                    if(!isFound){
+                        System.out.println("Exam doesn't exist.");
+                    }
+
+                    break;
+                }
+                case 7: {
+                    for(UniClass c : loggedInUser.getClasses()){
+                        System.out.println(c.getClassName());
+                        if(c.getExamList().isEmpty()){
+                            System.out.println("No exams for this class.");
+                        }
+                        c.printExams();
+                    }
+                }
+                case 8: {
+                    System.out.println("ADDING STUDY SESSION: ");
+
+                    UniClass foundClass = getClassFromUser();
+                    System.out.println("Enter exam title: ");
+                    String examInput = scanner.nextLine();
+
+                    LocalDate date = getDateFromUser();
+                    LocalTime time = getTimeFromUser();
+
+                    System.out.println("Enter duration (in minutes): ");
+                    int duration = Integer.valueOf(scanner.nextLine());
+
+                    StudySession newSession = new StudySession(examInput, date, time, duration, foundClass);
+
+                    foundClass.addStudySession(newSession);
+
+                    break;
                 }
 
         
