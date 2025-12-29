@@ -54,19 +54,19 @@ public class UniClass {
     }
     public void printTasks(){
         System.out.println("---- TASKS ----");
-        for(UniTask task : uniTasks.getList()){
+        for(UniTask task : getUniTasks()){
             System.out.println(task);
         }
     }
     public void printExams(){
         System.out.println("---- EXAMS ----");
-        for(UniExam exam : uniExams.getList()){
+        for(UniExam exam : getExamList()){
             System.out.println(exam);
         }
     }
     public void printStudySessions(){
         System.out.println("---- STUDY SESSIONS ----");
-        for(StudySession session : studySessions.getList()){
+        for(StudySession session : getStudySessions()){
             System.out.println(session);
         }
     }

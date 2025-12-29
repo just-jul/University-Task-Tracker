@@ -7,7 +7,7 @@ public class UniExam extends Task {
     private LocalTime examTime;
     private UniClass assignedClass;
     
-    public UniExam(String taskName, int taskId, LocalDate date, boolean isDone, String status, LocalTime examTime, UniClass assigneClass){
+    public UniExam(String taskName, LocalDate date, LocalTime examTime, UniClass assigneClass){
         super(taskName, date);
         this.examTime = examTime;
         this.assignedClass = assigneClass;
