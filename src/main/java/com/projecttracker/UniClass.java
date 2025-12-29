@@ -32,13 +32,25 @@ public class UniClass {
         ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
         return uniTaskList;
     }
+    public void addUniTask(UniTask task){
+        ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
+        uniTaskList.add(task);
+    }
     public ArrayList<UniExam> getExamList(){
         ArrayList<UniExam> examList = this.uniExams.getList();
         return examList;
     }
+    public void addExam(UniExam exam){
+        ArrayList<UniExam> examList = this.uniExams.getList();
+        examList.add(exam);
+    }
     public ArrayList<StudySession> getStudySessions(){
         ArrayList<StudySession> studySessionList = this.studySessions.getList();
         return studySessionList;
+    }
+    public void addStudySession(StudySession session){
+        ArrayList<StudySession> studySessionList = this.studySessions.getList();
+        studySessionList.add(session);
     }
     public void printTasks(){
         System.out.println("---- TASKS ----");
@@ -58,7 +70,7 @@ public class UniClass {
             System.out.println(session);
         }
     }
-    public void printAll(){
+    public void printAllForThisClass(){
         printTasks();
         printExams();
         printStudySessions();
@@ -66,7 +78,7 @@ public class UniClass {
 
     @Override
     public String toString(){
-        return "------Class name: "+this.getClassName()+" ------\n"+
-        "Teacher: \n"+this.getTeacher();
+        return "Class name: "+this.getClassName()+"\n"+
+        "Teacher: "+this.getTeacher()+"\n\n";
     }
 }

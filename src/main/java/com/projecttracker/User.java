@@ -29,9 +29,24 @@ public class User {
     public void addClass(UniClass c){
         this.getClasses().add(c);
     }
+    public UniClass findClass(String c){
+        for(UniClass uniclass : classes){
+            if(uniclass.getClassName().equalsIgnoreCase(c)){
+                return uniclass;
+            }
+        }
+        return null;
+    }
     public void printClasses(){
         for(UniClass c : this.classes){
             System.out.println(c);
+        }
+    }
+    public void printAll(){
+        for(UniClass c : this.classes){
+            System.out.println(c);
+            c.printAllForThisClass();
+            System.out.println("\n");
         }
     }
 }

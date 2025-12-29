@@ -9,9 +9,8 @@ public abstract class Task implements Trackable{
     private boolean isDone;
     private String status;
 
-    public Task(String taskName, int taskId, LocalDate date){
+    public Task(String taskName, LocalDate date){
         this.taskName = taskName;
-        this.taskId = taskId;
         this.date = date;
         this.isDone = false;
         this.status = "TO_DO";

@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class UniTask extends Task {
     private UniClass assignedClass;
 
-    public UniTask(String taskName, int taskId, LocalDate date, UniClass assignedClass){
-        super(taskName, taskId, date);
+    public UniTask(String taskName, LocalDate date, UniClass assignedClass){
+        super(taskName, date);
         this.assignedClass = assignedClass;
     }
 
