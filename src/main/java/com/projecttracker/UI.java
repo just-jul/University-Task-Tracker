@@ -46,7 +46,7 @@ public class UI {
             System.out.println("7. Show all exams.");
             System.out.println("8. Add study session.");
             System.out.println("9. Find study session.");
-            System.out.println("10. Show study sessions.");
+            System.out.println("10. Show all study sessions.");
             System.out.println("11. Exit.");
             
             int choice = Integer.valueOf(scanner.nextLine());
@@ -159,9 +159,37 @@ public class UI {
 
                     break;
                 }
+                case 9: {
+                    UniClass foundClass = getClassFromUser();
+                    System.out.println("Enter study session name: ");
+                    String sessionInput = scanner.nextLine();
 
-        
-                
+                    ArrayList<StudySession> sessions = foundClass.getStudySessions();
+
+                    boolean isFound = false;
+                    for(StudySession s : sessions){
+                        if(s.getTaskName().equalsIgnoreCase(sessionInput)){
+                            System.out.println(s);
+                            isFound = true;
+                            break;
+                        }
+                    }
+                    if(!isFound){
+                        System.out.println("Study session doesn't exist.");
+                    }
+
+                    break;
+                }
+                case 10 :{
+                    for(UniClass c : loggedInUser.getClasses()){
+                        System.out.println(c.getClassName());
+                        if(c.getStudySessions().isEmpty()){
+                            System.out.println("No sessions for this class.");
+                        }
+                        c.printStudySessions();;
+                    }
+                    break;
+                }
                 default:
                     break;
             }
