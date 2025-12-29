@@ -52,44 +52,67 @@ public class UI {
             }
 
             switch (choice) {
-                case 1:
+                case 1: 
                 loggedInUser.printAll();
                     break;
-                case 2:
-                    String classInput = "";
-                    UniClass foundClass = null;
-                    while(foundClass == null){
-                        System.out.println("Enter subject: ");
-                        classInput = scanner.nextLine();
-                        foundClass = loggedInUser.findClass(classInput);
-
-                        if(foundClass == null){
-                            System.out.println("Class doesn't exist. Try again.");
-                        }
-                    
-                    }
+                case 2: {
+                    UniClass foundClass = getClassFromUser();
                     System.out.println("Enter task: ");
                     String task = scanner.nextLine();
 
-                    System.out.print("Enter due date (yyyy-MM-dd): ");
-                    String dateInput = scanner.nextLine();
-                    LocalDate date = LocalDate.parse(dateInput);
+                    LocalDate date = null;
+                    while(date == null){
+                        System.out.print("Enter due date (yyyy-MM-dd): ");
+                        String dateInput = scanner.nextLine();
+                        try {
+                            date = LocalDate.parse(dateInput);
+                        } catch (Exception e) {
+                            System.out.println("Invalid date format. Try again.");
+                        }
+                    }
 
                     UniTask newTask = new UniTask(task, date, foundClass);
                     foundClass.addUniTask(newTask);
 
                     break;
-                case 3:
+                }
+                case 3: {
                     System.out.println("Enter task you want to find: ");
                     String taskInput = scanner.nextLine();
-                    System.out.println("Enter subject: ");
-                    String inputClass = scanner.nextLine();
-                    
 
+                    UniClass foundClass = getClassFromUser();
+
+                    ArrayList<UniTask> taskList = foundClass.getUniTasks();
+
+                    for(UniTask task : taskList){
+                        if(task.getTaskName().equalsIgnoreCase(taskInput)){
+                            System.out.println(task);
+                        }
+                    }
+
+                }
+
+        
                 
                 default:
                     break;
             }
         }
+    }
+
+    public UniClass getClassFromUser(){
+        String classInput = "";
+        UniClass foundClass = null;
+        while(foundClass == null){
+            System.out.println("Enter subject: ");
+            classInput = scanner.nextLine();
+            foundClass = loggedInUser.findClass(classInput);
+
+            if(foundClass == null){
+                System.out.println("Class doesn't exist. Try again.");
+            }
+        
+        }
+        return foundClass;
     }
 }
