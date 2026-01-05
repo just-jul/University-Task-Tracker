@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public abstract class Task implements Trackable{
     private String taskName;
-    private int taskId;
     private LocalDate date;
     private boolean isDone;
     private String status;
@@ -20,9 +19,6 @@ public abstract class Task implements Trackable{
     }
     public void setTaskName(String name){
         this.taskName = name;
-    }
-    public int getTaskId(){
-        return this.taskId;
     }
     public LocalDate getTaskDate(){
         return this.date;

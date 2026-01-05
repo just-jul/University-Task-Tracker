@@ -45,13 +45,13 @@ public class UI {
             System.out.println("MENU: ");
             System.out.println("1. Show all.");
             System.out.println("2. Add task.");
-            System.out.println("3. Find task.");
+            System.out.println("3. Find (and/or delete) task.");
             System.out.println("4. Show all tasks.");
             System.out.println("5. Add exam.");
-            System.out.println("6. Find exam.");
+            System.out.println("6. Find (and/or delete) exam.");
             System.out.println("7. Show all exams.");
             System.out.println("8. Add study session.");
-            System.out.println("9. Find study session.");
+            System.out.println("9. Find (and/or delete) study session.");
             System.out.println("10. Show all study sessions.");
             System.out.println("11. Exit.");
             
@@ -78,17 +78,31 @@ public class UI {
                     break;
                 }
                 case 3: {
-                    UniClass foundClass = getClassFromUser();
-                    System.out.println("Enter task you want to find: ");
-                    String taskInput = scanner.nextLine();
+                    System.out.println("FIND/DELETE TASK (press F for find/D for delete): ");
+                    String input = scanner.nextLine();
+                    if (input.equalsIgnoreCase("F")) {
+                        UniClass foundClass = getClassFromUser();
+                        System.out.println("Enter task you want to find: ");
+                        String taskInput = scanner.nextLine();
+    
+                        ArrayList<UniTask> taskList = foundClass.getUniTasks();
+    
+                        foundClass.findTask(taskInput);
 
-                    ArrayList<UniTask> taskList = foundClass.getUniTasks();
+                        break;
+                    }else if(input.equalsIgnoreCase("D")){
+                        UniClass foundClass = getClassFromUser();
+                        System.out.println("Enter task you want to delete: ");
+                        String taskInput = scanner.nextLine();
 
-                    for(UniTask task : taskList){
-                        if(task.getTaskName().equalsIgnoreCase(taskInput)){
-                            System.out.println(task);
-                        }
+                        ArrayList<UniTask> taskList = foundClass.getUniTasks();
+
+                        foundClass.deleteTaskByName(taskInput);
+
+                        break;
+
                     }
+                  
                     break;
                 }
                 case 4: {
@@ -117,25 +131,29 @@ public class UI {
                     break;
                 }
                 case 6: {
-                    UniClass foundClass = getClassFromUser();
-                    System.out.println("Enter topic of the exam you want to find: ");
-                    String examInput = scanner.nextLine();
+                    System.out.println("FIND/DELETE EXAM (press F for find/D for delete): ");
+                    String input = scanner.nextLine();
+                    if (input.equalsIgnoreCase("F")) {
+                        UniClass foundClass = getClassFromUser();
+                        System.out.println("Enter topic of the exam you want to find: ");
+                        String examInput = scanner.nextLine();
+    
+                        ArrayList<UniExam> examList = foundClass.getExamList();
+    
+                        foundClass.findExam(examInput);
+                        break;
+                    }else if(input.equalsIgnoreCase("D")){
+                        UniClass foundClass = getClassFromUser();
+                        System.out.println("Enter exam you want to delete: ");
+                        String examInput = scanner.nextLine();
 
-                    ArrayList<UniExam> examList = foundClass.getExamList();
+                        ArrayList<UniExam> examList = foundClass.getExamList();
 
-                    boolean isFound = false;
-                    for(UniExam exam : examList){
-                        if(exam.getTaskName().equalsIgnoreCase(examInput)){
-                            System.out.println(exam);
-                            isFound = true;
-                            break;
-                        }
+                        foundClass.deleteExamByName(examInput);
+                        break;
                     }
-                    if(!isFound){
-                        System.out.println("Exam doesn't exist.");
-                    }
-
                     break;
+
                 }
                 case 7: {
                     for(UniClass c : loggedInUser.getClasses()){
@@ -166,24 +184,27 @@ public class UI {
                     break;
                 }
                 case 9: {
-                    UniClass foundClass = getClassFromUser();
-                    System.out.println("Enter study session name: ");
-                    String sessionInput = scanner.nextLine();
+                    System.out.println("FIND/DELETE TASK (press F for find/D for delete): ");
+                    String input = scanner.nextLine();
+                    if (input.equalsIgnoreCase("F")) {
+                        UniClass foundClass = getClassFromUser();
+                        System.out.println("Enter study session name: ");
+                        String sessionInput = scanner.nextLine();
 
-                    ArrayList<StudySession> sessions = foundClass.getStudySessions();
+                        ArrayList<StudySession> sessions = foundClass.getStudySessions();
 
-                    boolean isFound = false;
-                    for(StudySession s : sessions){
-                        if(s.getTaskName().equalsIgnoreCase(sessionInput)){
-                            System.out.println(s);
-                            isFound = true;
-                            break;
-                        }
+                        foundClass.findStudySession(sessionInput);
+                        break;
+                    }else if(input.equalsIgnoreCase("D")){
+                        UniClass foundClass = getClassFromUser();
+                        System.out.println("Enter study session you want to delete: ");
+                        String taskInput = scanner.nextLine();
+
+                        ArrayList<StudySession> sessions = foundClass.getStudySessions();
+
+                        foundClass.deleteSessionByName(taskInput);
+                        break;
                     }
-                    if(!isFound){
-                        System.out.println("Study session doesn't exist.");
-                    }
-
                     break;
                 }
                 case 10 :{

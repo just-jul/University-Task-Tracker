@@ -32,10 +32,30 @@ public class UniClass {
         ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
         return uniTaskList;
     }
+    public void findTask(String taskName){
+        for(UniTask task : this.getUniTasks()){
+            if(task.getTaskName().equalsIgnoreCase(taskName)){
+                System.out.println(task);
+            }else{
+                System.out.println("Task doesn't exist.");
+            }
+        }
+    }
     public void addUniTask(UniTask task){
         ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
         uniTaskList.add(task);
     }
+    public void deleteUniTask(UniTask task){
+        ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
+        uniTaskList.remove(task);
+    }
+    public void deleteTaskByName(String taskName){
+        ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
+
+        this.findTask(taskName);
+        uniTaskList.removeIf(task -> task.getTaskName().equalsIgnoreCase(taskName));
+    }
+
     public ArrayList<UniExam> getExamList(){
         ArrayList<UniExam> examList = this.uniExams.getList();
         return examList;
@@ -44,6 +64,27 @@ public class UniClass {
         ArrayList<UniExam> examList = this.uniExams.getList();
         examList.add(exam);
     }
+    public void deleteUniExam(UniExam exam){
+        ArrayList<UniExam> examList = this.uniExams.getList();
+        examList.remove(exam);
+    }
+    public void deleteExamByName(String examName){
+        ArrayList<UniExam> examList = this.uniExams.getList();
+
+        this.findExam(examName);
+
+        examList.removeIf(exam -> exam.getTaskName().equalsIgnoreCase(examName));
+    }
+    public void findExam(String examName){
+        for(UniExam exam : this.getExamList()){
+            if(exam.getTaskName().equalsIgnoreCase(examName)){
+                System.out.println(exam);
+            }else{
+                System.out.println("Exam doesn't exist.");
+            }
+        }
+    }
+
     public ArrayList<StudySession> getStudySessions(){
         ArrayList<StudySession> studySessionList = this.studySessions.getList();
         return studySessionList;
@@ -52,6 +93,27 @@ public class UniClass {
         ArrayList<StudySession> studySessionList = this.studySessions.getList();
         studySessionList.add(session);
     }
+    public void deleteStudySession(StudySession session){
+        ArrayList<StudySession> studySessionList = this.studySessions.getList();
+        studySessionList.remove(session);
+    }
+    public void deleteSessionByName(String sessionName){
+        ArrayList<StudySession> studySessionList = this.studySessions.getList();
+
+        this.findStudySession(sessionName);
+
+        studySessionList.removeIf(session -> session.getTaskName().equalsIgnoreCase(sessionName));
+    }
+    public void findStudySession(String sessionName){
+        for(StudySession session : this.getStudySessions()){
+            if(session.getTaskName().equalsIgnoreCase(sessionName)){
+                System.out.println(session);
+            }else{
+                System.out.println("Study session doesn't exist.");
+            }
+        }
+    }
+
     public void printTasks(){
         System.out.println("---- TASKS ----");
         for(UniTask task : getUniTasks()){
