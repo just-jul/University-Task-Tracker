@@ -1,7 +1,6 @@
 package com.projecttracker.UI;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -85,8 +84,6 @@ public class UI {
                         System.out.println("Enter task you want to find: ");
                         String taskInput = scanner.nextLine();
     
-                        ArrayList<UniTask> taskList = foundClass.getUniTasks();
-    
                         foundClass.findTask(taskInput);
 
                         break;
@@ -94,8 +91,6 @@ public class UI {
                         UniClass foundClass = getClassFromUser();
                         System.out.println("Enter task you want to delete: ");
                         String taskInput = scanner.nextLine();
-
-                        ArrayList<UniTask> taskList = foundClass.getUniTasks();
 
                         foundClass.deleteTaskByName(taskInput);
 
@@ -138,16 +133,12 @@ public class UI {
                         System.out.println("Enter topic of the exam you want to find: ");
                         String examInput = scanner.nextLine();
     
-                        ArrayList<UniExam> examList = foundClass.getExamList();
-    
                         foundClass.findExam(examInput);
                         break;
                     }else if(input.equalsIgnoreCase("D")){
                         UniClass foundClass = getClassFromUser();
                         System.out.println("Enter exam you want to delete: ");
                         String examInput = scanner.nextLine();
-
-                        ArrayList<UniExam> examList = foundClass.getExamList();
 
                         foundClass.deleteExamByName(examInput);
                         break;
@@ -191,16 +182,12 @@ public class UI {
                         System.out.println("Enter study session name: ");
                         String sessionInput = scanner.nextLine();
 
-                        ArrayList<StudySession> sessions = foundClass.getStudySessions();
-
                         foundClass.findStudySession(sessionInput);
                         break;
                     }else if(input.equalsIgnoreCase("D")){
                         UniClass foundClass = getClassFromUser();
                         System.out.println("Enter study session you want to delete: ");
                         String taskInput = scanner.nextLine();
-
-                        ArrayList<StudySession> sessions = foundClass.getStudySessions();
 
                         foundClass.deleteSessionByName(taskInput);
                         break;
@@ -217,6 +204,7 @@ public class UI {
                     }
                     break;
                 }
+
                 default:
                     break;
             }
