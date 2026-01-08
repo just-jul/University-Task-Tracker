@@ -14,8 +14,6 @@ import com.google.gson.stream.JsonReader;
 
 
 public class UserDatabase {
-    private User user;
-    private static final String JSONFILEPATH = "data/<surname>.json";
 
     public UserDatabase(){
     }
@@ -24,11 +22,13 @@ public class UserDatabase {
     // writing User data into JSON file 
     public void save(User user){
 
+        // format: data/<surname>.json
         String filePath = "data/"+user.getSurname()+".json";
 
-        try(BufferedWriter br = new BufferedWriter(new FileWriter(filePath))){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))){
+            // set to a pretty print version for readability 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            br.write(gson.toJson(user));
+            bw.write(gson.toJson(user));
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -47,19 +47,6 @@ public class UserDatabase {
             System.out.println(e.getMessage());
             return null;
         }
-    }
-    
-    public void addClass(UniClass c){
-
-    }
-    public void addTask(UniTask task){
-
-    }
-    public void addExam(UniExam exam){
-
-    }
-    public void addStudySession(StudySession session){
-
     }
 
 }
