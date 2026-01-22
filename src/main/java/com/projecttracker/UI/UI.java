@@ -44,18 +44,18 @@ public class UI {
             System.out.println("MENU: ");
             System.out.println("1. Show all.");
             System.out.println("2. Add task.");
-            System.out.println("3. Find (and/or delete) task.");
+            System.out.println("3. Find and delete/mark done task.");
             System.out.println("4. Show all tasks.");
             System.out.println("5. Add exam.");
-            System.out.println("6. Find (and/or delete) exam.");
+            System.out.println("6. Find and delete/mark done exam.");
             System.out.println("7. Show all exams.");
             System.out.println("8. Add study session.");
-            System.out.println("9. Find (and/or delete) study session.");
+            System.out.println("9. Find and delete/mark done session.");
             System.out.println("10. Show all study sessions.");
             System.out.println("11. Exit.");
             
             int choice = Integer.valueOf(scanner.nextLine());
-            if(choice == 11){
+            if(choice == 12){
                 break;
             }
 
@@ -77,25 +77,22 @@ public class UI {
                     break;
                 }
                 case 3: {
-                    System.out.println("FIND/DELETE TASK (press F for find/D for delete): ");
-                    String input = scanner.nextLine();
-                    if (input.equalsIgnoreCase("F")) {
-                        UniClass foundClass = getClassFromUser();
-                        System.out.println("Enter task you want to find: ");
-                        String taskInput = scanner.nextLine();
+                    System.out.println("FIND AND DELETE/COMPLETE TASK (press F for find/D for delete/M for mark done): ");
+
+                    UniClass foundClass = getClassFromUser();
+                    System.out.println("Enter task you want to find: ");
+                    String taskInput = scanner.nextLine();
     
-                        foundClass.findTask(taskInput);
+                    foundClass.findTask(taskInput);
 
-                        break;
-                    }else if(input.equalsIgnoreCase("D")){
-                        UniClass foundClass = getClassFromUser();
-                        System.out.println("Enter task you want to delete: ");
-                        String taskInput = scanner.nextLine();
+                    System.out.println("Press D to delete / M to mark done: ");
+                    String input = scanner.nextLine();
 
+                    if(input.equalsIgnoreCase("D")){
                         foundClass.deleteTaskByName(taskInput);
-
                         break;
-
+                    }else if(input.equalsIgnoreCase("M")){
+                        
                     }
                   
                     break;

@@ -28,6 +28,7 @@ public class UniClass {
         return this.teacher;
     }
 
+    // ---- TASK methods ----
     public ArrayList<UniTask> getUniTasks(){
         ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
         return uniTaskList;
@@ -45,17 +46,18 @@ public class UniClass {
         ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
         uniTaskList.add(task);
     }
-    public void deleteUniTask(UniTask task){
-        ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
-        uniTaskList.remove(task);
-    }
     public void deleteTaskByName(String taskName){
         ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
-
         this.findTask(taskName);
         uniTaskList.removeIf(task -> task.getTaskName().equalsIgnoreCase(taskName));
+        System.out.println("\nTask deleted successfully.");
+    }
+    public void markTaskDone(UniTask task){
+        task.markDone();
+        System.out.println("Task marked as completed.");
     }
 
+    // ---- EXAM methods ----
     public ArrayList<UniExam> getExamList(){
         ArrayList<UniExam> examList = this.uniExams.getList();
         return examList;
@@ -64,16 +66,13 @@ public class UniClass {
         ArrayList<UniExam> examList = this.uniExams.getList();
         examList.add(exam);
     }
-    public void deleteUniExam(UniExam exam){
-        ArrayList<UniExam> examList = this.uniExams.getList();
-        examList.remove(exam);
-    }
     public void deleteExamByName(String examName){
         ArrayList<UniExam> examList = this.uniExams.getList();
 
         this.findExam(examName);
 
         examList.removeIf(exam -> exam.getTaskName().equalsIgnoreCase(examName));
+        System.out.println("Exam deleted successfully.");
     }
     public void findExam(String examName){
         for(UniExam exam : this.getExamList()){
@@ -84,7 +83,13 @@ public class UniClass {
             }
         }
     }
+    public void markExamDone(UniExam exam){
+        exam.markDone();
+        System.out.println("Exam marked as completed.");
+    }
 
+
+    // ---- STUDY SESSION methods ---- 
     public ArrayList<StudySession> getStudySessions(){
         ArrayList<StudySession> studySessionList = this.studySessions.getList();
         return studySessionList;
@@ -99,10 +104,10 @@ public class UniClass {
     }
     public void deleteSessionByName(String sessionName){
         ArrayList<StudySession> studySessionList = this.studySessions.getList();
-
         this.findStudySession(sessionName);
-
         studySessionList.removeIf(session -> session.getTaskName().equalsIgnoreCase(sessionName));
+        System.out.println("Session deleted successfully.");
+
     }
     public void findStudySession(String sessionName){
         for(StudySession session : this.getStudySessions()){
@@ -112,6 +117,11 @@ public class UniClass {
                 System.out.println("Study session doesn't exist.");
             }
         }
+    
+    }
+    public void markSessionDone(StudySession s){
+        s.markDone();
+        System.out.println("Study session marked as completed.");
     }
 
     public void printTasks(){
