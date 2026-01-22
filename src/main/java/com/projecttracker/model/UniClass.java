@@ -42,6 +42,16 @@ public class UniClass {
             }
         }
     }
+    public UniTask getTask(String taskName){
+        for(UniTask task : this.getUniTasks()){
+            if(task.getTaskName().equalsIgnoreCase(taskName)){
+                return task;
+            }else{
+                System.out.println("Error");
+            }
+        }
+        return null;
+    }
     public void addUniTask(UniTask task){
         ArrayList<UniTask> uniTaskList = this.uniTasks.getList();
         uniTaskList.add(task);
@@ -51,10 +61,6 @@ public class UniClass {
         this.findTask(taskName);
         uniTaskList.removeIf(task -> task.getTaskName().equalsIgnoreCase(taskName));
         System.out.println("\nTask deleted successfully.");
-    }
-    public void markTaskDone(UniTask task){
-        task.markDone();
-        System.out.println("Task marked as completed.");
     }
 
     // ---- EXAM methods ----
@@ -83,11 +89,16 @@ public class UniClass {
             }
         }
     }
-    public void markExamDone(UniExam exam){
-        exam.markDone();
-        System.out.println("Exam marked as completed.");
+    public UniExam getExam(String examName){
+        for(UniExam exam : this.getExamList()){
+            if(exam.getTaskName().equalsIgnoreCase(examName)){
+                return exam;
+            }else{
+                System.out.println("Error");
+            }
+        }
+        return null;
     }
-
 
     // ---- STUDY SESSION methods ---- 
     public ArrayList<StudySession> getStudySessions(){
@@ -119,9 +130,15 @@ public class UniClass {
         }
     
     }
-    public void markSessionDone(StudySession s){
-        s.markDone();
-        System.out.println("Study session marked as completed.");
+    public UniExam getSession(String sessionName){
+        for(StudySession s : this.getStudySessions()){
+            if(s.getTaskName().equalsIgnoreCase(sessionName)){
+                return s;
+            }else{
+                System.out.println("Error");
+            }
+        }
+        return null;
     }
 
     public void printTasks(){

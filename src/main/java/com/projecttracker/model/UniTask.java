@@ -10,6 +10,7 @@ public class UniTask extends Task {
         this.assignedClass = assignedClass;
     }
 
+
     @Override
     public String toString(){
         return "Task name: "+this.getTaskName()+"\n"+

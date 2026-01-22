@@ -50,7 +50,7 @@ public class UI {
             System.out.println("6. Find and delete/mark done exam.");
             System.out.println("7. Show all exams.");
             System.out.println("8. Add study session.");
-            System.out.println("9. Find and delete/mark done session.");
+            System.out.println("9. Find and delete/mark done study session.");
             System.out.println("10. Show all study sessions.");
             System.out.println("11. Exit.");
             
@@ -77,7 +77,7 @@ public class UI {
                     break;
                 }
                 case 3: {
-                    System.out.println("FIND AND DELETE/COMPLETE TASK (press F for find/D for delete/M for mark done): ");
+                    System.out.println("FIND TASK: ");
 
                     UniClass foundClass = getClassFromUser();
                     System.out.println("Enter task you want to find: ");
@@ -92,7 +92,7 @@ public class UI {
                         foundClass.deleteTaskByName(taskInput);
                         break;
                     }else if(input.equalsIgnoreCase("M")){
-                        
+                        foundClass.getTask(taskInput).markDone();
                     }
                   
                     break;
@@ -123,22 +123,20 @@ public class UI {
                     break;
                 }
                 case 6: {
-                    System.out.println("FIND/DELETE EXAM (press F for find/D for delete): ");
-                    String input = scanner.nextLine();
-                    if (input.equalsIgnoreCase("F")) {
-                        UniClass foundClass = getClassFromUser();
-                        System.out.println("Enter topic of the exam you want to find: ");
-                        String examInput = scanner.nextLine();
-    
-                        foundClass.findExam(examInput);
-                        break;
-                    }else if(input.equalsIgnoreCase("D")){
-                        UniClass foundClass = getClassFromUser();
-                        System.out.println("Enter exam you want to delete: ");
-                        String examInput = scanner.nextLine();
+                    System.out.println("FIND EXAM: ");
+                    UniClass foundClass = getClassFromUser();
+                    System.out.println("Enter topic of the exam you want to find: ");
+                    String examInput = scanner.nextLine();
 
+                    foundClass.findExam(examInput);
+
+                    System.out.println("Press D to delete / M to mark done: ");
+                    String input = scanner.nextLine();
+                    if(input.equalsIgnoreCase("D")){
                         foundClass.deleteExamByName(examInput);
                         break;
+                    }else if(input.equalsIgnoreCase("M")){
+                        foundClass.getExam(examInput).markDone();
                     }
                     break;
 
@@ -172,22 +170,21 @@ public class UI {
                     break;
                 }
                 case 9: {
-                    System.out.println("FIND/DELETE TASK (press F for find/D for delete): ");
+                    System.out.println("FIND STUDY SESSION: ");
+
+                    UniClass foundClass = getClassFromUser();
+                    System.out.println("Enter study session name: ");
+                    String sessionInput = scanner.nextLine();
+
+                    foundClass.findStudySession(sessionInput);
+
+                    System.out.println("Press D to delete / M to mark done: ");
                     String input = scanner.nextLine();
-                    if (input.equalsIgnoreCase("F")) {
-                        UniClass foundClass = getClassFromUser();
-                        System.out.println("Enter study session name: ");
-                        String sessionInput = scanner.nextLine();
-
-                        foundClass.findStudySession(sessionInput);
+                    if(input.equalsIgnoreCase("D")){
+                        foundClass.deleteSessionByName(sessionInput);
                         break;
-                    }else if(input.equalsIgnoreCase("D")){
-                        UniClass foundClass = getClassFromUser();
-                        System.out.println("Enter study session you want to delete: ");
-                        String taskInput = scanner.nextLine();
-
-                        foundClass.deleteSessionByName(taskInput);
-                        break;
+                    }else if(input.equalsIgnoreCase("M")){
+                        foundClass.getSession(sessionInput);
                     }
                     break;
                 }
